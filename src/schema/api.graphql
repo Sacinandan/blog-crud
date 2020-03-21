@@ -1,0 +1,16 @@
+type Query {
+  users: [User!]!
+  user(id: ID!): User!
+  posts: [Post!]!
+  post(id: ID!): Post!
+}
+
+type Mutation {
+  signup(signUpInput: SignUpInput): AuthPayload!
+  login(loginInput: LoginInput): AuthPayload!
+  updateUser(id: ID!, signUpInput: SignUpInput): User!
+  deleteUser(id: ID!): User!
+  createPost(postInput: PostInput): Post!
+  updatePost(id: ID!, postInput: PostInput): Post!
+  deletePost(id: ID!): Post!
+}

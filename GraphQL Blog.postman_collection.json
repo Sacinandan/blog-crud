@@ -1,0 +1,302 @@
+{
+	"info": {
+		"_postman_id": "c69c5083-3f3a-4bb6-88e7-6ae5edfe23eb",
+		"name": "GraphQL Blog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sign up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation ($email: String!, $password: String!, $firstName: String!, $lastName: String!) {\r\n  signup(signUpInput: { email: $email, password: $password, firstName: $firstName, lastName: $lastName }) {\r\n    id\r\n    email\r\n    firstName\r\n    lastName\r\n    createdAt\r\n  }\r\n}",
+						"variables": "{\n\t\"email\": \"user3@email.com\",\n\t\"password\": \"password\",\n\t\"firstName\": \"UserName\",\n\t\"lastName\": \"UserLastName\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\r\n  login(loginInput: { email: \"user2@email.com\", password: \"pasword\" }) {\r\n    id\r\n    email\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation ($id: ID!, $email: String!, $password: String!, $firstName: String!, $lastName: String!) {\r\n  updateUser(id: $id, signUpInput: { email: $email, password: $password, firstName: $firstName, lastName: $lastName }) {\r\n    id\r\n    email\r\n\tfirstName\r\n\tlastName\r\n\tcreatedAt\r\n\tmodifiedAt\r\n  }\r\n}",
+						"variables": "{\n\t\"id\": \"5e7384e29bd1160007cd00e0\",\n\t\"email\": \"user3@email.com\",\n\t\"password\": \"password\",\n\t\"firstName\": \"UserName\",\n\t\"lastName\": \"UserLastName\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "update user by id"
+			},
+			"response": []
+		},
+		{
+			"name": "delete user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation ($id: ID!) {\r\n  deleteUser(id: $id) {\r\n    id\r\n  }\r\n}",
+						"variables": "{\n\t\"id\": \"5e724b909bd11600078ce236\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "delete user by id"
+			},
+			"response": []
+		},
+		{
+			"name": "users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\n    users {\n        id\n        email\n        firstName\n        lastName\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query ($id: ID!) {\n    user (id: $id) {\n        firstName\n        lastName\n        post {\n            id\n        }\n    }\n    \n}",
+						"variables": "{\n\t\"id\": \"5e7249a39bd11600078ce234\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "get user by id"
+			},
+			"response": []
+		},
+		{
+			"name": "create post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\r\n  createPost(postInput: { title: \"Post Title\", body: \"Post Body\" }) {\r\n    id\r\n    title\r\n    body\r\n    createdAt\r\n    author {\r\n      id\r\n      email\r\n    }\r\n  }\r\n}",
+						"variables": "{\n\t\"title\": \"New Post for blog\",\n\t\"body\": \"text of post\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation ($id: ID!, $title: String!, $body: String!) {\r\n  updatePost(id: $id, postInput: { title: $title, body: $body }) {\r\n    title\r\n    body\r\n    createdAt\r\n    modifiedAt\r\n    author {\r\n      id\r\n      email\r\n    }\r\n  }\r\n}",
+						"variables": "{\n\t\"id\": \"5e724b909bd11600078ce237\",\n\t\"title\": \"New Post for blog\",\n\t\"body\": \"text of post\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "update post by id"
+			},
+			"response": []
+		},
+		{
+			"name": "delete post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation ($id: ID!) {\r\n  deletePost(id: $id) {\r\n    id\r\n  }\r\n}",
+						"variables": "{\n\t\"id\": \"5e724b909bd11600078ce237\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "delete post by id"
+			},
+			"response": []
+		},
+		{
+			"name": "posts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\n    posts {\n        title\n        author {\n            email\n            createdAt\n        }\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query ($id: ID!) {\n    post (id: $id) {\n        author {\n            id\n        }\n    }\n    \n}",
+						"variables": "{\n\t\"id\": \"5e724b909bd11600078ce237\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "get post by id"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

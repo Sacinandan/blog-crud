@@ -1,0 +1,78 @@
+{
+  "name": "blog-crud",
+  "version": "1.0.0",
+  "description": "Prisma GraphQL Mongo Nest Boilerplate",
+  "author": "Sacinandan Kisor",
+  "email": "sacinandankisor@gmail.com",
+  "repository": "https://github.com/Sacinandan/blog-crud",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf dist && tsc -p tsconfig.build.json",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "start": "ts-node -r tsconfig-paths/register src/main.ts",
+    "start:dev": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/main.js\"",
+    "start:debug": "tsc-watch -p tsconfig.build.json --onSuccess \"node --inspect-brk dist/src/main.js\"",
+    "start:prod": "node dist/src/main.js",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
+  },
+  "dependencies": {
+    "@nestjs/common": "^6.11.11",
+    "@nestjs/config": "^0.4.0",
+    "@nestjs/core": "^6.11.11",
+    "@nestjs/graphql": "^6.6.2",
+    "@nestjs/jwt": "^6.1.2",
+    "@nestjs/passport": "^6.2.0",
+    "@nestjs/platform-express": "^6.11.11",
+    "apollo-server-express": "^2.11.0",
+    "bcryptjs": "^2.4.3",
+    "class-transformer": "^0.2.3",
+    "cookie-parser": "^1.4.5",
+    "graphql": "^14.6.0",
+    "graphql-tools": "^4.0.7",
+    "nest-winston": "^1.3.1",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "prisma-client-lib": "^1.34.10",
+    "reflect-metadata": "^0.1.12",
+    "rimraf": "^2.6.2",
+    "rxjs": "^6.5.4",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@nestjs/testing": "^6.11.11",
+    "@types/express": "4.16.1",
+    "@types/graphql": "^14.0.7",
+    "@types/jest": "^25.1.4",
+    "@types/node": "11.13.4",
+    "@types/passport-jwt": "^3.0.3",
+    "@types/supertest": "2.0.7",
+    "jest": "^25.1.0",
+    "prettier": "1.17.0",
+    "supertest": "4.0.2",
+    "ts-jest": "24.0.2",
+    "ts-node": "8.1.0",
+    "tsc-watch": "2.2.1",
+    "tsconfig-paths": "3.8.0",
+    "tslint": "5.16.0",
+    "typescript": "3.4.3"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}

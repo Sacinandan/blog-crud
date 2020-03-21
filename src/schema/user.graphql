@@ -1,0 +1,10 @@
+type User {
+  id: ID!
+  email: String!
+  posts: [Post!]!
+  firstName: String!
+  lastName: String!
+  access: String
+  createdAt: String!
+  modifiedAt: String!
+}

@@ -1,0 +1,7 @@
+endpoint: ${env:APP_HOST}:${env:PRISMA_PORT}
+secret: ${env:PRISMA_MANAGEMENT_API_SECRET}
+datamodel:
+  - database/datamodel.prisma
+generate:
+  - generator: typescript-client
+    output: ./generated/prisma-client/

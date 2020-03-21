@@ -1,0 +1,16 @@
+input SignUpInput {
+  email: String!
+  password: String!
+  firstName: String!
+  lastName: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type AuthPayload {
+  id: ID!
+  email: String!
+}
